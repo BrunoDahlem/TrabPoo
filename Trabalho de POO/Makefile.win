@@ -1,0 +1,37 @@
+# Project: Tabalho-de-POO
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = Empresa.o Jogador.o main.o Time.o
+LINKOBJ  = Empresa.o Jogador.o main.o Time.o
+LIBS     = -L"F:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"F:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"F:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"F:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"F:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"F:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"F:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"F:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"F:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = Tabalho-de-POO.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+Empresa.o: Empresa.cpp
+	$(CPP) -c Empresa.cpp -o Empresa.o $(CXXFLAGS)
+
+Jogador.o: Jogador.cpp
+	$(CPP) -c Jogador.cpp -o Jogador.o $(CXXFLAGS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+Time.o: Time.cpp
+	$(CPP) -c Time.cpp -o Time.o $(CXXFLAGS)
